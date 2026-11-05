@@ -69,6 +69,9 @@ document.getElementById("papers").innerHTML = papers.map(p => `
     <p class="links">${Object.entries(p.links || {}).map(([k, v]) => `<a href="${esc(v)}">${esc(k)}</a>`).join("")}</p>
     ${p.abstract ? `<details><summary>Abstract</summary><p>${esc(p.abstract)}</p></details>` : ""}
   </div>`).join("");
+
+// Open every link in a new tab (mailto excluded: it would leave a blank tab).
+document.querySelectorAll('a:not([href^="mailto:"])').forEach(a => { a.target = "_blank"; a.rel = "noopener"; });
 </script>
 </body>
 </html>

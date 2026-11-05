@@ -41,15 +41,8 @@
 
 <script>
 // Edit this list only. Newest first.
-const papers = [
-  {
-    title: "Example Paper Title",
-    authors: "Nhan Nguyen, Coauthor A, Coauthor B",
-    venue: "NeurIPS 2026",
-    abstract: "One-paragraph abstract goes here.",
-    links: { PDF: "papers/example.pdf", arXiv: "https://arxiv.org/abs/0000.00000", Code: "https://github.com/" }
-  },
-];
+// Entry shape: { title, authors, venue, abstract, links: { PDF: "url", Code: "url" } }
+const papers = [];
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 document.getElementById("papers").innerHTML = papers.map(p => `

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Name — Research</title>
+<meta name="description" content="Research papers by Your Name">
+<style>
+  :root { --bg:#fff; --fg:#1a1a1a; --muted:#666; --accent:#0b5fff; --line:#e5e5e5; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#121212; --fg:#eaeaea; --muted:#9a9a9a; --accent:#6ea0ff; --line:#2a2a2a; }
+  }
+  body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 system-ui,sans-serif; }
+  main { max-width:720px; margin:0 auto; padding:48px 16px; }
+  a { color:var(--accent); }
+  h1 { margin:0 0 4px; font-size:2rem; }
+  .muted { color:var(--muted); }
+  h2 { margin-top:48px; border-bottom:1px solid var(--line); padding-bottom:6px; }
+  .paper { margin:24px 0; }
+  .paper h3 { margin:0; font-size:1.05rem; }
+  .paper p { margin:2px 0; }
+  .links a { margin-right:12px; font-size:.9rem; }
+  details summary { cursor:pointer; color:var(--muted); font-size:.9rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Your Name</h1>
+  <p class="muted">Your title · Your institution</p>
+  <p>Short bio: what you research and what you care about.</p>
+  <p class="links">
+    <a href="mailto:you@example.com">Email</a>
+    <a href="https://scholar.google.com/">Google Scholar</a>
+    <a href="https://github.com/">GitHub</a>
+    <a href="cv.pdf">CV</a>
+  </p>
+
+  <h2>Publications</h2>
+  <div id="papers"></div>
+</main>
+
+<script>
+// Edit this list only. Newest first.
+const papers = [
+  {
+    title: "Example Paper Title",
+    authors: "Your Name, Coauthor A, Coauthor B",
+    venue: "NeurIPS 2026",
+    abstract: "One-paragraph abstract goes here.",
+    links: { PDF: "papers/example.pdf", arXiv: "https://arxiv.org/abs/0000.00000", Code: "https://github.com/" }
+  },
+];
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+document.getElementById("papers").innerHTML = papers.map(p => `
+  <div class="paper">
+    <h3>${esc(p.title)}</h3>
+    <p class="muted">${esc(p.authors)}</p>
+    <p><em>${esc(p.venue)}</em></p>
+    <p class="links">${Object.entries(p.links || {}).map(([k, v]) => `<a href="${esc(v)}">${esc(k)}</a>`).join("")}</p>
+    ${p.abstract ? `<details><summary>Abstract</summary><p>${esc(p.abstract)}</p></details>` : ""}
+  </div>`).join("");
+</script>
+</body>
+</html>

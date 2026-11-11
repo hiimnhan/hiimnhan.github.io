@@ -46,13 +46,6 @@
 // Entry shape: { title, authors, venue, abstract, links: { PDF: "url", Code: "url" } }
 const papers = [
   {
-    title: "Werewolf - How to be a Better Villager",
-    authors: "Chew Jin Cheng, Duong Minh Hoang, Hoang Phuong Nam, Nhan Nguyen, Vuong Thanh Cong (alphabetical order)",
-    venue: "Coursework",
-    abstract: "This study investigates whether smaller language models (SLMs) can improve their performance when guided by larger language model (LLMs) in a multi-agent game. As the current research on how SLMs perform when supported by LLMs is limited, the study focuses on integrating a Coach-Player framework into the Werewolf game. In this study, villager agents are supported by a coach to play against the wolf agents to evaluate the impact of guidance on game performance. The results indicate that while the models with lower capability show no improvement, using coaching improves the performance for higher ones by increasing win rate from 55% to 74%. These findings suggest that as long as the model is able to interpret and apply the guidance, coaching can improve its performance.",
-    links: { PDF: "papers/werewolf.pdf" }
-  },
-  {
     title: "Truthful Verified Credit: Rewarding Verified Value, Not Reliance, Among Learning Agents",
     authors: "Nhan Nguyen",
     venue: "Preprint, 2026",
@@ -65,6 +58,13 @@ const papers = [
     venue: "Master thesis, Lancaster University",
     abstract: "Autonomous highway driving is a multi-agent coordination problem in which every vehicle carries a private behavioural type that others cannot observe directly. This thesis formulates cooperative multi-agent highway driving as a repeated signalling game over a small discrete vocabulary of behaviourally grounded tokens whose meanings are not pre-assigned. It then asks whether communication emerges among the agents at all, and in what sense. The agents are trained using multi-agent reinforcement learning and the signalling channel is probed with evaluation-time interventions that separately disturb the token, the neighbour kinematics, and their binding. Communication does emerge, not in the form standard information metrics are designed to register, but through what we call convention-of-use. The token carries almost no information about a driver's hidden type. Nevertheless, corrupting the binding between token and behaviour raises the collision rate by 65 to 86%, depending on how the binding is broken. In this experiment, the active interventions revealed a dependence on the channel that the passive metrics did not register. This suggests that evaluations of emergent communication, and audits of connected-driving systems, should test the binding between message and behaviour directly rather than rely on measured informativeness alone.",
     links: { PDF: "papers/Emergent%20Behavioural%20Signalling%20in%20Cooperative%20Multi-Agent%20Highway%20Driving.pdf" }
+  },
+  {
+    title: "Werewolf - How to be a Better Villager",
+    authors: "Chew Jin Cheng, Duong Minh Hoang, Hoang Phuong Nam, Nhan Nguyen, Vuong Thanh Cong (alphabetical order)",
+    venue: "Coursework",
+    abstract: "This study investigates whether smaller language models (SLMs) can improve their performance when guided by larger language model (LLMs) in a multi-agent game. As the current research on how SLMs perform when supported by LLMs is limited, the study focuses on integrating a Coach-Player framework into the Werewolf game. In this study, villager agents are supported by a coach to play against the wolf agents to evaluate the impact of guidance on game performance. The results indicate that while the models with lower capability show no improvement, using coaching improves the performance for higher ones by increasing win rate from 55% to 74%. These findings suggest that as long as the model is able to interpret and apply the guidance, coaching can improve its performance.",
+    links: { PDF: "papers/werewolf.pdf" }
   },
 ];
 

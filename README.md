@@ -42,6 +42,7 @@ Only notes you mark are published. The vault itself never goes into this repo.
 Notes:
 
 - Two published notes can't share a filename, and a note can't be named `index.md` (reserved for the Notes page). The script stops with an error if either happens.
+- Each note gets the address `/notes/<note-name-in-kebab-case>` (e.g. `Mechanisms of (mis)allocating Credit` → `/notes/mechanisms-of-mis-allocating-credit`). To choose your own, add `permalink: notes/whatever` to the note.
 - Links to notes you haven't published show as plain text.
 - Side-Notes sidenotes, math, and the Callout Studio callouts (lemma, proof, proposition, theorem, definition) render as in Obsidian.
 

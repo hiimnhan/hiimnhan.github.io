@@ -16,7 +16,8 @@ const SKIP_DIRS = new Set(["Templates", "node_modules"])
 
 export function isPublished(src) {
   const fm = src.match(/^---\r?\n([\s\S]*?)\r?\n---/)
-  return !!fm && /^publish:\s*(true|yes)\s*$/im.test(fm[1])
+  // Obsidian writes `publish: true` for a checkbox property, `publish: "true"` for a text one.
+  return !!fm && /^publish:\s*(["']?)(true|yes)\1\s*$/im.test(fm[1])
 }
 
 export function embeds(src) {
@@ -26,6 +27,25 @@ export function embeds(src) {
     if (!/^[a-z]+:/i.test(m[1])) out.add(decodeURIComponent(m[1]))
   // only files with a non-markdown extension (note embeds stay links)
   return [...out].filter((e) => path.extname(e) && path.extname(e) !== ".md")
+}
+
+// "Mechanisms of (mis)allocating Credit.md" -> "mechanisms-of-mis-allocating-credit"
+export function kebab(name) {
+  return name
+    .replace(/\.md$/i, "")
+    .normalize("NFKD")
+    .replace(/[̀-ͯ]/g, "") // strip accents
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+}
+
+// Give the published copy a /notes/<kebab-name> address unless the note sets its own permalink.
+export function withPermalink(src, name) {
+  const fm = src.match(/^---\r?\n([\s\S]*?)\r?\n---/)
+  if (fm && /^permalink:/im.test(fm[1])) return src
+  const line = `permalink: notes/${kebab(name)}`
+  return fm ? src.replace(/^---\r?\n/, `---\n${line}\n`) : `---\n${line}\n---\n${src}`
 }
 
 function walk(dir, files = []) {
@@ -56,7 +76,7 @@ function main() {
     if (name === "index.md") throw new Error(`Rename ${f}: "index.md" is reserved for the notes landing page`)
     if (seen.has(name)) throw new Error(`Two published notes named "${name}":\n  ${seen.get(name)}\n  ${f}`)
     seen.set(name, f)
-    fs.copyFileSync(f, path.join(OUT, name))
+    fs.writeFileSync(path.join(OUT, name), withPermalink(src, name))
     for (const e of embeds(src)) {
       const file = byName.get(path.basename(e))
       if (!file) { console.warn(`  missing embed in ${name}: ${e}`); continue }

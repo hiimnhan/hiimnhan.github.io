@@ -1,7 +1,16 @@
 import assert from "node:assert"
-import { isPublished, embeds } from "./publish-notes.mjs"
+import { isPublished, embeds, kebab, withPermalink } from "./publish-notes.mjs"
 assert.equal(isPublished("---\ntags: [a]\npublish: true\n---\nx"), true)
 assert.equal(isPublished("---\npublish: false\n---\n"), false)
 assert.equal(isPublished("no frontmatter\npublish: true"), false)
 assert.deepEqual(embeds("![[fig.png|200]] ![[Other note]] ![](img/a%20b.jpg) ![](https://x/y.png)"), ["fig.png", "img/a b.jpg"])
 console.log("ok")
+assert.equal(isPublished('---\npublish: "true"\n---\n'), true)
+assert.equal(isPublished("---\npublish: 'true'\n---\n"), true)
+assert.equal(isPublished('---\npublish: "true\n---\n'), false)
+console.log("ok2")
+assert.equal(kebab("Mechanisms of (mis)allocating Scientific Credit.md"), "mechanisms-of-mis-allocating-scientific-credit")
+assert.equal(kebab("Café & Nash Equilibrium.md"), "cafe-nash-equilibrium")
+assert.equal(withPermalink("---\npublish: true\n---\nx", "A B.md"), "---\npermalink: notes/a-b\npublish: true\n---\nx")
+assert.equal(withPermalink("---\npermalink: notes/mine\n---\nx", "A B.md"), "---\npermalink: notes/mine\n---\nx")
+console.log("ok3")

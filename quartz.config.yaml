@@ -184,7 +184,7 @@ plugins:
       priority: 20
       condition: not-index
   - source: "@quartz-community/tag-list"
-    enabled: false
+    enabled: true
     layout:
       position: beforeBody
       priority: 30
@@ -248,7 +248,6 @@ plugins:
       includeAll: false
       includedProperties:
         - description
-        - tags
         - aliases
       excludedProperties: []
       hidePropertiesView: false
@@ -282,6 +281,15 @@ plugins:
     layout:
       position: left
       priority: 15
+    order: 50
+  - source: ./plugins/highlights
+    enabled: true
+    options:
+      title: Highlighted notes
+    layout:
+      position: afterBody
+      priority: 5
+      condition: is-index
     order: 50
 layout:
   groups:

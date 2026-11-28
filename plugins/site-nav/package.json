@@ -5,8 +5,14 @@
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
-    "./components": { "types": "./dist/components/index.d.ts", "import": "./dist/components/index.js" }
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    }
   },
   "quartz": {
     "name": "site-nav",
@@ -16,10 +22,20 @@
     "quartzVersion": ">=5.0.0",
     "dependencies": [],
     "defaultEnabled": true,
-    "defaultOptions": { "links": {} },
-    "components": {
-      "SiteNav": { "displayName": "Site navigation", "defaultPosition": "left", "defaultPriority": 40 }
+    "defaultOptions": {
+      "links": {}
     },
-    "optionSchema": { "links": { "type": "object" } }
+    "components": {
+      "SiteNav": {
+        "displayName": "Site navigation",
+        "defaultPosition": "left",
+        "defaultPriority": 40
+      }
+    },
+    "optionSchema": {
+      "links": {
+        "type": "object"
+      }
+    }
   }
 }

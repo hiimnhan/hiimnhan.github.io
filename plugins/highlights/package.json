@@ -1,0 +1,39 @@
+{
+  "name": "highlights",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./components": {
+      "types": "./dist/components/index.d.ts",
+      "import": "./dist/components/index.js"
+    }
+  },
+  "quartz": {
+    "name": "highlights",
+    "displayName": "Highlighted notes",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultEnabled": true,
+    "defaultOptions": {},
+    "components": {
+      "Highlights": {
+        "displayName": "Highlighted notes",
+        "defaultPosition": "afterBody",
+        "defaultPriority": 5
+      }
+    },
+    "optionSchema": {
+      "title": {
+        "type": "string"
+      }
+    }
+  }
+}

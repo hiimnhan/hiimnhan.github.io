@@ -43,6 +43,7 @@ Notes:
 
 - Two published notes can't share a filename, and a note can't be named `index.md` (reserved for the Notes page). The script stops with an error if either happens.
 - Each note gets the address `/notes/<note-name-in-kebab-case>` (e.g. `Mechanisms of (mis)allocating Credit` → `/notes/mechanisms-of-mis-allocating-credit`). To choose your own, add `permalink: notes/whatever` to the note.
+- Add `highlight: true` to a published note to list it under "Highlighted notes" on the home page (title plus the start of the note). Change the heading via `options.title` under `./plugins/highlights` in `quartz.config.yaml`.
 - Links to notes you haven't published show as plain text.
 - Side-Notes sidenotes, math, and the Callout Studio callouts (lemma, proof, proposition, theorem, definition) render as in Obsidian.
 

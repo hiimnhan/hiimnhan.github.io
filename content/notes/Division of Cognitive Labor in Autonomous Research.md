@@ -9,6 +9,7 @@ tags:
   - cooperative
   - autonomous-research
 publish: "true"
+highlight: "true"
 ---
 The Division of Cognitive Labor [1] examines how scientific communities allocate their members across competing research methods and directions to maximise collective discovery. The study shows that researchers with individual rationality mostly choose to stick with methods or directions which are uniformly approved by the community, leaving other approaches under-discovered.
 
@@ -22,7 +23,7 @@ There are a lot of problems when people work together.
 
 2. **Individual rationality vs. Social Welfare**: a rational scientist who only looks at the success rate of a method would choose to follow the stronger method regardless of how many colleagues are actively working on it. Putting 100 scientists into a method doesn't improve the probability of solving the problem. If the method turns out to be a dead-end, they all have been wasting time. If putting a scientist to work on another approach, it would increase the chance of solving the problem. However, that scientist doesn't have any incentive to do that as it is likely to be a dead-end. Who would ruin his career for a nonsense thing anyway? Assume we can persuade a scientist to chase after a new method, it is, unfortunately, not enough. A person may not contribute enough effort to reach the "critical mass" needed for success [1].
 
-3. ***Truthful reporting**. To motivate a person to jump off the ship (metaphorically, ofc), we should give him incentives. How should we do that? 
+3. **Truthful reporting**. To motivate a person to jump off the ship (metaphorically, ofc), we should give him incentives. How should we do that? 
 
 The ultimate goal is to maximise the knowledge gathered for the community. To do that, the mechanism should encourage agents to discover new scientific knowledge without abandoning existing one. The agents should truthfully report findings, whatever the results are, to the whole community. The mechanism should allocate sufficient agents to continue existing work while incentivising others to explore.
 

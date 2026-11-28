@@ -170,3 +170,34 @@ a.external::after {
   content: none !important;
   background-image: none !important;
 }
+
+// Note listings (Notes page, tag pages): tags as a row of pills under the title,
+// instead of a narrow column on the right.
+li.section-li > .section {
+  grid-template-columns: fit-content(8em) 1fr;
+  grid-template-areas:
+    "meta desc"
+    ".    tags";
+  > .meta { grid-area: meta; }
+  > .desc { grid-area: desc; }
+  > ul.tags {
+    grid-area: tags;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 0.3rem;
+    margin: 0.25rem 0 0;
+    padding: 0;
+    > li { margin: 0; }
+  }
+}
+
+// Tag pills everywhere: Tokyo Night blue.
+a.tag-link,
+a.internal.tag-link {
+  color: #7aa2f7 !important;
+  background-color: rgba(122, 162, 247, 0.14) !important;
+  border-radius: 999px;
+  padding: 0.1rem 0.55rem;
+  &:hover { background-color: rgba(122, 162, 247, 0.26) !important; }
+}

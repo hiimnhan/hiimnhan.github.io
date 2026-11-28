@@ -1,0 +1,155 @@
+@use "./variables.scss" as *;
+
+// put your custom CSS here!
+
+// ── Sidenotes (Obsidian Side-Notes HTML spans) ─────────────────
+// Each <span class="sidenote"> is preceded by <sup class="sidenote-ref">
+// (added by plugins/sidenotes). A CSS counter numbers both.
+:root {
+  --sn-width: 17rem;
+  --sn-gap: 2.5rem;
+}
+
+article {
+  counter-reset: sidenote equation;
+}
+
+.sidenote-ref {
+  counter-increment: sidenote;
+  &::after {
+    content: counter(sidenote);
+    color: var(--tertiary);
+    font-weight: 600;
+    font-size: 0.75em;
+    margin-left: 0.1em;
+  }
+}
+
+.sidenote,
+.marginnote {
+  float: right;
+  clear: right;
+  width: var(--sn-width);
+  margin-right: calc(-1 * (var(--sn-width) + var(--sn-gap)));
+  margin-bottom: 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: var(--darkgray);
+  text-align: left;
+  font-style: normal;
+  font-weight: normal;
+
+  &.left {
+    float: left;
+    clear: left;
+    margin-right: 0;
+    margin-left: calc(-1 * (var(--sn-width) + var(--sn-gap)));
+  }
+}
+
+.sidenote::before {
+  content: counter(sidenote) ". ";
+  color: var(--tertiary);
+  font-weight: 700;
+}
+
+// Narrow screens: no margin, show notes inline as small indented blocks.
+@media (max-width: 1200px) {
+  .sidenote,
+  .marginnote,
+  .sidenote.left,
+  .marginnote.left {
+    float: none;
+    display: block;
+    width: auto;
+    margin: 0.5rem 0 0.5rem 1rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid var(--lightgray);
+  }
+}
+
+// ── Equation numbers, like Obsidian's equation-ordinal ─────────
+article .katex-display {
+  position: relative;
+  counter-increment: equation;
+  &::after {
+    content: "(" counter(equation) ")";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+  }
+  > .katex {
+    padding-right: 3rem;
+  }
+}
+
+// Monospace everywhere, like the vault. The Tokyo Night theme maps
+// --bodyFont/--headerFont to its own --font-text, so override that.
+:root,
+body {
+  --font-text: "JetBrains Mono", ui-monospace, monospace !important;
+  --font-interface: "JetBrains Mono", ui-monospace, monospace !important;
+  --bodyFont: "JetBrains Mono", ui-monospace, monospace !important;
+  --headerFont: "JetBrains Mono", ui-monospace, monospace !important;
+}
+
+// Links to unpublished notes: show as plain text, not a dead link.
+a.internal.broken {
+  color: inherit;
+  background: none;
+  pointer-events: none;
+  text-decoration: none;
+}
+
+// ── Custom callouts from Obsidian Callout Studio ───────────────
+// Same ids, aliases, colours and icons as the vault's plugin settings.
+.callout[data-callout="lemma"] {
+  --color: #a882ff;
+  --border: #a882ff00;
+  --bg: #a882ff14;
+  --callout-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h3l3 8 5-16h4"/><path d="m16 13 5 5"/><path d="m21 13-5 5"/></svg>');
+}
+.callout[data-callout="proof"] {
+  --color: #9e9e9e;
+  --border: #9e9e9e00;
+  --bg: #9e9e9e14;
+  --callout-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="15" r="4"/><circle cx="18" cy="15" r="4"/><path d="M14 15a2 2 0 0 0-2-1 2 2 0 0 0-2 1"/><path d="M2.5 13 5 7c.7-1.3 1.4-2 3-2"/><path d="M21.5 13 19 7c-.7-1.3-1.5-2-3-2"/></svg>');
+}
+.callout[data-callout="proposition"],
+.callout[data-callout="propo"] {
+  --color: #53dfdd;
+  --border: #53dfdd00;
+  --bg: #53dfdd14;
+  --callout-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c2 0 3-1 3-3V8c0-2 1-4 4-4"/><path d="M4 11h7"/><path d="m14 12 6 6"/><path d="m20 12-6 6"/></svg>');
+}
+.callout[data-callout="theorem"] {
+  --color: #027aff;
+  --border: #027aff00;
+  --bg: #027aff14;
+  --callout-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 17c2 0 2.8-1 2.8-2.8V10c0-2 1-3.3 3.2-3"/><path d="M9 11.2h5.7"/></svg>');
+}
+.callout[data-callout="definition"] {
+  --color: #f48fb1;
+  --border: #f48fb100;
+  --bg: #f48fb114;
+  --callout-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/><path d="m8 13 4-7 4 7"/><path d="M9.1 11h5.7"/></svg>');
+}
+// Callout Studio style: tinted title strip, no border.
+.callout[data-callout="lemma"],
+.callout[data-callout="proof"],
+.callout[data-callout="proposition"],
+.callout[data-callout="propo"],
+.callout[data-callout="theorem"],
+.callout[data-callout="definition"] {
+  border-radius: 4px;
+  > .callout-title {
+    margin: 0 -1rem;
+    padding: 0.4rem 1rem;
+    background: color-mix(in srgb, var(--color) 12%, transparent);
+  }
+}
+.callout[data-callout="proof"] {
+  --bg: #9e9e9e0d;
+}

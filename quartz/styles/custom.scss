@@ -164,3 +164,9 @@ img.profile-photo {
   border-radius: 50%;
   border: 2px solid var(--lightgray);
 }
+
+// Quartz already puts an icon inside external links; drop the theme's duplicate.
+a.external::after {
+  content: none !important;
+  background-image: none !important;
+}

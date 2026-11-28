@@ -1,0 +1,25 @@
+{
+  "name": "site-nav",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./components": { "types": "./dist/components/index.d.ts", "import": "./dist/components/index.js" }
+  },
+  "quartz": {
+    "name": "site-nav",
+    "displayName": "Site navigation",
+    "category": "component",
+    "version": "1.0.0",
+    "quartzVersion": ">=5.0.0",
+    "dependencies": [],
+    "defaultEnabled": true,
+    "defaultOptions": { "links": {} },
+    "components": {
+      "SiteNav": { "displayName": "Site navigation", "defaultPosition": "left", "defaultPriority": 40 }
+    },
+    "optionSchema": { "links": { "type": "object" } }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "version": "1.0.0",
+  "plugins": {
+    "sidenotes": {
+      "source": "./plugins/sidenotes",
+      "resolved": "/Users/nhanncv/personal/projects/site/plugins/sidenotes",
+      "commit": "local",
+      "installedAt": "2026-11-28T16:24:45.764Z"
+    },
+    "site-nav": {
+      "source": "./plugins/site-nav",
+      "resolved": "/Users/nhanncv/personal/projects/site/plugins/site-nav",
+      "commit": "local",
+      "installedAt": "2026-11-28T16:24:45.343Z"
+    }
+  }
+}

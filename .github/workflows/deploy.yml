@@ -31,7 +31,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install Quartz plugins
-        run: npx quartz plugin install
+        # --from-config: the lockfile pins local plugins by absolute path on the
+        # author's machine; the config's relative ./plugins/* paths work anywhere.
+        run: npx quartz plugin install --from-config
       - name: Build
         run: npx quartz build
       - name: Upload artifact
